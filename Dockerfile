@@ -1,14 +1,12 @@
 FROM node:18
-
 WORKDIR /app
 
+# Copy package descriptors and install dependencies at build time
 COPY package*.json ./
-RUN npm install
+RUN npm ci
 
+# Copy the remainder of your source code
 COPY . .
 
-RUN npm run build  # Build your Next.js app
-
-EXPOSE 3000
-
-CMD ["npm", "start"]
+# Default command
+CMD ["npm", "run", "dev"]
