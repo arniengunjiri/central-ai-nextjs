@@ -14,7 +14,7 @@ RUN npm run build
 FROM node:18-slim
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y git curl ripgrep && \
+RUN apt-get update && apt-get install -y git curl ripgrep procps && \
     rm -rf /var/lib/apt/lists/*
 RUN npm install -g @anthropic-ai/claude-code@latest
 
